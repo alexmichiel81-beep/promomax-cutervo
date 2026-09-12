@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PROMOMAX CUTERVO</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#fff8e8;color:#17352a}
+header{padding:25px 6%;color:#fff;background:linear-gradient(135deg,#064b31,#12a96b,#f3b51b);box-shadow:0 5px 20px #0003}
+.logo{font-size:34px;font-weight:900}.logo span{color:#ffe16a}.sub{margin:5px 0 0}
+.hero{text-align:center;padding:55px 6%;background:linear-gradient(135deg,#fff8df,#eafff2)}
+.hero h1{font-size:clamp(42px,8vw,76px);margin:0;color:#087448;text-shadow:3px 3px #ffd34f}
+.hero p{font-size:19px;max-width:850px;margin:15px auto;line-height:1.6}
+.buttons{max-width:1200px;margin:25px auto;padding:0 5%;display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:14px}
+button{border:0;padding:18px 12px;border-radius:22px;font-weight:900;font-size:16px;background:#fff;color:#075b3a;box-shadow:0 7px 20px #0002;cursor:pointer;transition:.2s}
+button:hover,button.active{transform:scale(1.04);background:linear-gradient(135deg,#075b3a,#16a96b);color:white}
+main{max-width:1200px;margin:auto;padding:15px 5% 60px}.panel{background:#fff;border-radius:32px;padding:30px;box-shadow:0 12px 35px #0002}
+h2{font-size:36px;color:#087448;margin:0}.intro{font-size:17px;line-height:1.7}
+.count{display:inline-block;background:#ffd34f;border-radius:30px;padding:8px 15px;font-weight:bold;margin:8px 0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{padding:21px;border-radius:23px;background:linear-gradient(145deg,#fffdf4,#edfff5);border:2px solid #e7f1e9;box-shadow:0 8px 20px #0001;transition:.2s}
+.card:hover{transform:translateY(-7px);border-color:#f2bd35;box-shadow:0 14px 28px #0b8d5930}.num{font-size:28px;font-weight:900;color:#e29d00}.card h3{color:#075b3a;margin:7px 0;font-size:20px}.card p{line-height:1.5;margin:0}.tag{display:inline-block;margin-top:12px;background:#0b8d59;color:#fff;border-radius:20px;padding:6px 11px;font-size:12px;font-weight:bold}
+footer{background:#063d2a;color:#fff;text-align:center;padding:28px}
+</style>
+</head>
+<body>
+<header><div class="logo">PROMOMAX <span>CUTERVO</span></div><p class="sub">✨ Descubre • Visita • Disfruta • Promociona ✨</p></header>
+<section class="hero"><h1>¡CUTERVO TE ESPERA!</h1><p>Una página para descubrir y promocionar los atractivos, negocios, instituciones, cultura y naturaleza de nuestra provincia.</p></section>
+<nav class="buttons">
+<button class="active" onclick="show('turismo',this)">🏞️ Turismo</button>
+<button onclick="show('comida',this)">🍲 Comida</button>
+<button onclick="show('educacion',this)">📚 Educación</button>
+<button onclick="show('cultura',this)">🎭 Cultura</button>
+<button onclick="show('naturaleza',this)">🌿 Naturaleza</button>
+<button onclick="show('comercio',this)">🛍️ Comercio</button>
+</nav>
+<main><section class="panel" id="panel"></section></main>
+<footer><b>PROMOMAX CUTERVO</b><br>Promocionando lo mejor de nuestra provincia.</footer>
+<script>
+const data={
+turismo:["🏞️ Turismo","Cutervo reúne atractivos naturales, paisajes y espacios urbanos que pueden formar parte de una ruta turística.",[
+["Parque Nacional de Cutervo","Área natural protegida y uno de los principales atractivos de la provincia.","Naturaleza"],
+["Mirador Turístico del Arenal","Mirador destacado para apreciar el paisaje de Cutervo.","Mirador"],
+["El Arenal","Paisaje de arena blanca asociado al Cerro Ilucán.","Paisaje"],
+["Cerro Ilucán","Atractivo natural emblemático de Cutervo.","Montaña"],
+["Cerro El Yunque","Formación natural ubicada en Cutervo.","Aventura"],
+["Plaza de Armas de Cutervo","Espacio representativo del centro de la ciudad.","Ciudad"],
+["Grutas de Rodio Pampa","Atractivo natural de la provincia.","Grutas"],
+["Sócota","Distrito con atractivos naturales y paisajes rurales.","Destino"],
+["Torres de Rejopampa","Formaciones geológicas incluidas en la oferta turística provincial.","Geología"],
+["Bosque de Piedras El Pilco","Atractivo natural ubicado en Sócota.","Naturaleza"],
+["Laguna El Pilco","Paisaje natural de Sócota.","Laguna"],
+["Catarata de Pilco","Cascada incluida en los recursos turísticos de Sócota.","Catarata"]]],
+comida:["🍲 Comida","Descubre restaurantes y negocios gastronómicos que pueden formar parte de una ruta de sabores de Cutervo.",[
+["la Familia Chicken & Grill","Restaurante de Cutervo con una propuesta de pollo y parrillas.","Restaurante"],
+["El Sabor Del Cuy","Restaurante conocido por su propuesta gastronómica relacionada con el cuy.","Restaurante"],
+["Las Flores Restaurant Sabor y Tradición","Restaurante ubicado en Jr. Progreso.","Restaurante"],
+["PIRATA Nikkei & Lounge","Restaurante ubicado en Jr. Comercio 350.","Restaurante"],
+["El Pirata Sushi & Parrillas","Propuesta gastronómica con sushi y parrillas.","Restaurante"],
+["Restaurant La Reserve","Restaurante registrado entre los negocios gastronómicos de Cutervo.","Restaurante"],
+["L'atelier Maxdel","Restaurante con propuesta peruana y sudamericana.","Restaurante"],
+["Panadería Dulcería Tradición","Negocio gastronómico de panadería y dulcería.","Panadería"],
+["Restaurant Anita","Restaurante de comida peruana y sudamericana.","Restaurante"],
+["Restaurante El Horno","Restaurante con comida peruana y parrillas.","Restaurante"],
+["La Esquina Italiana","Restaurante de comida italiana, peruana y pizzas.","Restaurante"],
+["Casita Del Pan","Panadería y cafetería con productos para disfrutar en Cutervo.","Cafetería"]]],
+educacion:["📚 Educación","Conoce algunas instituciones educativas de Cutervo y descubre el aporte que realizan a la formación de niños, adolescentes y jóvenes.",[
+["IEE Toribio Casanova","Institución educativa emblemática de Cutervo, con atención en primaria, secundaria y EBA.","Institución emblemática"],
+["IE Nuestra Señora de la Asunción","Institución educativa ubicada en el centro de Cutervo, con presencia en los niveles de educación básica.","Institución educativa"],
+["IE Fe y Alegría 69","Institución educativa de Cutervo que atiende los niveles inicial, primaria y secundaria.","Institución educativa"],
+["Colegio Privado Alexander Graham Bell","Institución educativa privada ubicada en Jr. 22 de Octubre, Cutervo.","Colegio privado"],
+["I.E.P.B. Premium College","Institución educativa ubicada en Cutervo que forma parte de la oferta educativa local.","Colegio"],
+["CETPRO Santiago Antúnez de Mayolo","Centro de Educación Técnico-Productiva ubicado en Cutervo, orientado a la formación para el trabajo.","Educación técnica"],
+["IE Juan Pablo II","Institución educativa que forma parte de la oferta escolar de Cutervo.","Institución educativa"],
+["IE Juan Velasco Alvarado","Institución educativa registrada dentro de la provincia de Cutervo.","Institución educativa"],
+["IE Miguel Grau","Institución educativa que forma parte de las instituciones escolares de Cutervo.","Institución educativa"],
+["IE Milagro de Jesús","Institución educativa que puede incorporarse a la promoción educativa de la provincia.","Institución educativa"],
+["IE 10234","Institución educativa pública de educación primaria registrada en Cutervo.","Educación primaria"],
+["IE 10235","Institución educativa pública que forma parte de la oferta educativa local.","Educación básica"],
+["IE 10236","Institución educativa pública registrada en el distrito de Cutervo.","Educación básica"],
+["IE 10237","Institución educativa pública de Cutervo orientada a la formación primaria.","Educación primaria"]]],cultura:["🎭 Cultura","Las fiestas, tradiciones, música, danzas e historia forman parte de la identidad de Cutervo.",[
+["Fiesta de San Juan Bautista","Una de las principales celebraciones tradicionales de Cutervo.","Festividad"],
+["Fiesta Taurina de Cutervo","Manifestación tradicional vinculada a la celebración patronal.","Tradición"],
+["Música cutervina","Expresiones musicales que forman parte de la identidad local.","Música"],
+["Danzas tradicionales","Manifestaciones artísticas que conservan costumbres de la provincia.","Danza"],
+["Artesanía local","Promoción de productos y trabajos elaborados por artesanos.","Artesanía"],
+["Gastronomía tradicional","Sabores y recetas que forman parte de la identidad familiar y local.","Gastronomía"],
+["Historia de Cutervo","Relatos y hechos importantes para conocer el pasado de la provincia.","Historia"],
+["Plaza de Armas","Espacio representativo para conocer el centro histórico y la vida local.","Patrimonio"],
+["Festividades distritales","Celebraciones que muestran la diversidad cultural de los distritos.","Fiestas"],
+["Tradiciones familiares","Costumbres transmitidas de generación en generación.","Identidad"]]],
+naturaleza:["🌿 Naturaleza","La biodiversidad de Cutervo es un patrimonio que merece ser conocido, valorado y protegido.",[
+["Parque Nacional de Cutervo","Área protegida con gran diversidad de ecosistemas y especies.","Área protegida"],
+["Gruta de los Guácharos","Uno de los atractivos principales del Parque Nacional de Cutervo.","Fauna"],
+["Gruta de los Murciélagos","Cavidad natural incluida entre los atractivos del parque.","Gruta"],
+["Gruta Blanca","Atractivo natural del Parque Nacional de Cutervo.","Gruta"],
+["Bosque de Palmeras","Ecosistema destacado dentro del Parque Nacional de Cutervo.","Flora"],
+["Catarata Santa Rosa","Atractivo natural del Parque Nacional de Cutervo.","Catarata"],
+["Bosques de neblina","Ecosistemas de gran valor para la biodiversidad local.","Bosque"],
+["Orquídeas","Plantas que forman parte de la diversidad florística de la zona.","Flora"],
+["Guácharos","Aves asociadas a las grutas del Parque Nacional de Cutervo.","Fauna"],
+["Cerro Ilucán","Atractivo natural con paisajes de arena blanca y montaña.","Paisaje"],
+["Laguna El Pilco","Recurso natural ubicado en Sócota.","Laguna"],
+["Catarata de Pilco","Recurso natural incluido en la oferta turística provincial.","Catarata"]]],
+comercio:["🛍️ Comercio","PROMOMAX puede convertirse en una vitrina para mostrar negocios, productos, servicios y emprendimientos de Cutervo.",[
+["Mercado de Cutervo","Espacio comercial donde se encuentran productos de la provincia.","Mercado"],
+["Productores agrícolas","Familias y productores que ofrecen productos del campo.","Producción"],
+["Artesanos locales","Emprendedores que elaboran productos y recuerdos.","Artesanía"],
+["Panaderías","Negocios que ofrecen panes, dulces y productos locales.","Alimentos"],
+["Restaurantes","Negocios gastronómicos para residentes y visitantes.","Gastronomía"],
+["Hoteles y hospedajes","Servicios necesarios para recibir a visitantes.","Turismo"],
+["Tiendas locales","Comercios que ofrecen productos y servicios a la población.","Comercio"],
+["Ferias comerciales","Espacios para promocionar productos y emprendimientos.","Feria"],
+["Emprendimientos juveniles","Ideas de negocio desarrolladas por jóvenes de Cutervo.","Emprendimiento"],
+["Productos agrícolas locales","Productos cultivados y comercializados en la provincia.","Agricultura"]]]
+};
+function show(k,b){
+document.querySelectorAll("button").forEach(x=>x.classList.remove("active"));b.classList.add("active");
+let d=data[k];
+document.getElementById("panel").innerHTML=`<h2>${d[0]}</h2><p class="intro">${d[1]}</p><span class="count">${d[2].length} lugares y propuestas para promocionar</span><div class="grid">${d[2].map((x,i)=>`<article class="card"><div class="num">${String(i+1).padStart(2,"0")}</div><h3>${x[0]}</h3><p>${x[1]}</p><span class="tag">${x[2]}</span></article>`).join("")}</div>`;
+}
+show("turismo",document.querySelector("button.active"));
+</script>
+</body>
+</html>
